@@ -13,7 +13,7 @@ npm install -g @novonetworks/generator-typescript
 Then generate your new project:
 
 ```bash
-yo @novonetworks/generator-typescript
+yo @novonetworks/typescript
 ```
 
 ## Getting To Know Yeoman
