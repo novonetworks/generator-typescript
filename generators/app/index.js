@@ -171,7 +171,12 @@ module.exports = class extends Generator {
 
         this.spawnCommandSync('git', ['init'])
         this.npmInstall(devDependencies.concat(types), { 'save-dev': true })
-        this.spawnCommandSync('git', ['add', '-A', '.'])
-        this.spawnCommandSync('git', ['commit', '-m', '"Initial commit"'])
+            .then(() => {
+                this.spawnCommandSync('git', ['add', '-A', '.'])
+                this.spawnCommandSync('git', ['commit', '-m', '"Initial commit"'])
+            })
+            .catch(reason => {
+                console.error(reason.message)
+            })
     }
 }
