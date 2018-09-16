@@ -1,3 +1,5 @@
-export function isNotEmpty(message) {
+function isNotEmpty(message) {
     return message !== ''
 }
+
+module.exports = { isNotEmpty }

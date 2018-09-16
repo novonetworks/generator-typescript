@@ -1,0 +1,25 @@
+{
+    "rules": {
+        "no-console": false,
+        "object-literal-sort-keys": false,
+        "strict-type-predicates": false,
+        "member-ordering": false,
+        "no-namespace": false,
+        "jsx-no-bind": false,
+        "semicolon": [
+            true,
+            "never"
+        ],
+        "no-debugger": false
+    },
+    "extends": [
+        "tslint:recommended",
+        "tslint-config-prettier"
+    ],
+    "linterOptions": {
+        "exclude": [
+            "config/**/*.js",
+            "node_modules/**/*.ts"
+        ]
+    }
+}

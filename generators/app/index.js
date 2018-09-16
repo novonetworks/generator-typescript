@@ -1,8 +1,8 @@
 'use strict'
-import { isNotEmpty } from './utils'
-
+const { isNotEmpty } = require('./utils')
 const Generator = require('yeoman-generator')
 const chalk = require('chalk')
+const JSON_SPACE = 4
 
 module.exports = class extends Generator {
     prompting() {
@@ -12,12 +12,14 @@ module.exports = class extends Generator {
             )} generator!`
         )
 
+        const appName = this.appname.replace(/\s+/g, '-')
+
         const prompts = [
             {
                 type: 'input',
                 name: 'name',
-                message: `question name (${this.appname}): `,
-                default: this.appname
+                message: `question name (${appName}): `,
+                default: appName
             },
             {
                 type: 'input',
@@ -28,7 +30,8 @@ module.exports = class extends Generator {
             {
                 type: 'input',
                 name: 'description',
-                message: 'question description: '
+                message: 'question description (Typescript Project): ',
+                default: 'Typescript Project'
             },
             {
                 type: 'input',
@@ -38,8 +41,10 @@ module.exports = class extends Generator {
             },
             {
                 type: 'input',
-                name: 'url',
-                message: 'question repository url: '
+                name: 'repository',
+                message:
+                    'question repository url (github.com/novonetworks/generator-typescript): ',
+                default: 'https://github.com/novonetworks/generator-typescript'
             },
             {
                 type: 'input',
@@ -64,11 +69,63 @@ module.exports = class extends Generator {
         })
     }
 
-    writing() {
-        this.fs.copy(this.templatePath('.'), this.destinationPath('.'))
+    writing(rootPath) {
+        this.fs.copy(this.templatePath('**/*'), this.destinationRoot(rootPath))
+        this.fs.copy(this.templatePath('**/.*'), this.destinationRoot(rootPath))
 
         const scripts = {
-            start: 'ts-node src/index.ts'
+            start: 'ts-node src/index.ts',
+            build: 'tsc',
+            lint: 'tslint src/**/*.ts',
+            test: 'cross-env CI=true jest --coverage --colors --reporters',
+            'test:watch': 'jest --watchAll',
+            format: 'prettier --write "src/**/*"',
+            'pre-commit': 'npm-run-all test lint-staged',
+            'lint-staged': 'lint-staged'
+        }
+
+        const jest = {
+            globals: {
+                'ts-jest': {
+                    tsConfigFile: '<rootDir>/tsconfig.json'
+                }
+            },
+            collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}'],
+            moduleDirectories: ['<rootDir>/src', 'node_modules'],
+            moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx'],
+            testEnvironment: 'node',
+            testMatch: ['**/?(*.)(spec|test).(j|t)s?(x)', '**/__tests__/**/*.(j|t)s?(x)'],
+            transform: {
+                '^.+\\.(ts|tsx)?$': 'ts-jest'
+            },
+            transformIgnorePatterns: [
+                '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|ts|tsx)$'
+            ]
+        }
+
+        const prettier = {
+            parser: 'typescript',
+            semi: false,
+            singleQuote: true,
+            overrides: [
+                {
+                    files: '*.json',
+                    options: {
+                        parser: 'json'
+                    }
+                }
+            ]
+        }
+
+        const husky = {
+            hooks: {
+                'pre-commit': 'npm run pre-commit'
+            }
+        }
+
+        const lintStaged = {
+            '*.{ts,tsx,js,jsx}': ['prettier --write', 'tslint --fix', 'git add'],
+            '*.{json,css,md}': ['prettier --write', 'git add']
         }
 
         this.fs.writeJSON(
@@ -82,18 +139,38 @@ module.exports = class extends Generator {
                 author: this.props.author,
                 license: this.props.license,
                 private: this.props.private,
-                scripts: scripts
+                scripts: scripts,
+                jest: jest,
+                husky: husky,
+                'lint-staged': lintStaged,
+                prettier: prettier
             },
             (key, value) => {
                 return value || isNotEmpty(value) ? value : undefined
-            }
+            },
+            JSON_SPACE
         )
     }
 
-    async install() {
-        const dependencies = []
-        const devDependencies = ['typescript', 'ts-node']
-        await this.npmInstall(dependencies)
-        await this.npmInstall(devDependencies, { 'save-dev': true })
+    install() {
+        const devDependencies = [
+            'typescript',
+            'ts-node',
+            'jest',
+            'ts-jest',
+            'cross-env',
+            'npm-run-all',
+            'husky@next',
+            'prettier',
+            'lint-staged',
+            'tslint',
+            'tslint-config-prettier'
+        ]
+
+        const types = ['@types/jest']
+
+        this.spawnCommandSync('git', ['init'])
+        this.npmInstall(devDependencies.concat(types), { 'save-dev': true })
+        this.spawnCommandSync('npm-run-all', ['test', 'lint-staged'])
     }
 }

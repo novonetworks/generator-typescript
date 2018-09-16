@@ -62,3 +62,5 @@ fabric.properties
 .idea/httpRequests
 
 node_modules
+generators/app/templates/build
+**fixture/package-lock.json

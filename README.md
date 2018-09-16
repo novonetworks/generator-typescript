@@ -28,11 +28,11 @@ yo @novonetworks/typescript
 MIT © [Novo Networks](http://www.novonetworks.com/)
 
 
-[npm-image]: https://badge.fury.io/js/generator-novonetworks-generator-typescript.svg
-[npm-url]: https://npmjs.org/package/generator-novonetworks-generator-typescript
-[travis-image]: https://travis-ci.org/wickedev/generator-novonetworks-generator-typescript.svg?branch=master
-[travis-url]: https://travis-ci.org/wickedev/generator-novonetworks-generator-typescript
-[daviddm-image]: https://david-dm.org/wickedev/generator-novonetworks-generator-typescript.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/wickedev/generator-novonetworks-generator-typescript
-[coveralls-image]: https://coveralls.io/repos/wickedev/generator-novonetworks-generator-typescript/badge.svg
-[coveralls-url]: https://coveralls.io/r/wickedev/generator-novonetworks-generator-typescript
+[npm-image]: https://badge.fury.io/js/@novonetworks/generator-typescript.svg
+[npm-url]: https://npmjs.org/package/@novonetworks/generator-typescript
+[travis-image]: https://travis-ci.org/wickedev/@novonetworks/generator-typescript.svg?branch=master
+[travis-url]: https://travis-ci.org/wickedev/@novonetworks/generator-typescript
+[daviddm-image]: https://david-dm.org/wickedev/@novonetworks/generator-typescript.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/wickedev/@novonetworks/generator-typescript
+[coveralls-image]: https://coveralls.io/repos/wickedev/@novonetworks/generator-typescript/badge.svg
+[coveralls-url]: https://coveralls.io/r/wickedev/@novonetworks/generator-typescript
