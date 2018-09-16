@@ -2,7 +2,6 @@
 const { isNotEmpty } = require('./utils')
 const Generator = require('yeoman-generator')
 const chalk = require('chalk')
-const childProcess = require('child_process')
 const JSON_SPACE = 4
 
 module.exports = class extends Generator {
@@ -171,10 +170,7 @@ module.exports = class extends Generator {
         const types = ['@types/jest']
 
         this.spawnCommandSync('git', ['init'])
-        this.spawnCommandSync(
-            'npm',
-            ['install', '--save-dev'].concat(devDependencies).concat(types)
-        )
+        this.npmInstall(devDependencies.concat(types), { 'save-dev': true })
         this.spawnCommandSync('git', ['add', '-A', '.'])
         this.spawnCommandSync('git', ['commit', '-m', '"Initial commit"'])
     }
