@@ -1,4 +1,4 @@
-# @novonetworks/generator-typescript [[![npm version](https://badge.fury.io/js/%40novonetworks%2Fgenerator-typescript.svg)](https://badge.fury.io/js/%40novonetworks%2Fgenerator-typescript) [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
+# @novonetworks/generator-typescript [[![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
 > Typescript Scaffolding Generator
 
 ## Installation

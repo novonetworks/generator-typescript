@@ -126,7 +126,7 @@ module.exports = class extends Generator {
 
         const lintStaged = {
             '*.{ts,tsx,js,jsx}': ['prettier --write', 'tslint --fix', 'git add'],
-            '*.{json,css,md}': ['prettier --write', 'git add']
+            '*.{json,css}': ['prettier --write', 'git add']
         }
 
         this.fs.writeJSON(
@@ -176,17 +176,6 @@ module.exports = class extends Generator {
             ['install', '--save-dev'].concat(devDependencies).concat(types)
         )
         this.spawnCommandSync('git', ['add', '-A', '.'])
-        this.spawnCommandSync('git', ['commit', '-m', '"initial commit"'])
-
-        this.log(this.props.repository)
-        if (this.props.repository) {
-            this.spawnCommandSync('git', [
-                'remote',
-                'add',
-                'origin',
-                this.props.repository
-            ])
-            this.spawnCommandSync('git', ['push', '-u', 'origin', 'master'])
-        }
+        this.spawnCommandSync('git', ['commit', '-m', '"Initial commit"'])
     }
 }
