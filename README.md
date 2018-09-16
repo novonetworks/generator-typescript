@@ -25,7 +25,7 @@ yo @novonetworks/typescript
 
 ## License
 
-MIT © [Ryan Yang]()
+MIT © [Novo Networks](http://www.novonetworks.com/)
 
 
 [npm-image]: https://badge.fury.io/js/generator-novonetworks-generator-typescript.svg
