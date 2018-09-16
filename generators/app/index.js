@@ -7,7 +7,7 @@ module.exports = class extends Generator {
   prompting() {
     // Have Yeoman greet the user.
     this.log(
-      yosay(`Welcome to the premium ${chalk.red('generator-novonetworks-generator-typescript')} generator!`)
+      yosay(`Welcome to the premium ${chalk.red('generator-typescript')} generator!`)
     );
 
     const prompts = [
