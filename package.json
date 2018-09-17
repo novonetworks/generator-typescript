@@ -1,15 +1,20 @@
 {
     "name": "@novonetworks/generator-typescript",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "description": "Typescript Scaffolding Generator",
     "homepage": "https://github.com/novonetworks/generator-typescript",
     "author": {
         "name": "Ryan Yang",
         "email": "orange@novonetworks.com"
     },
-    "files": ["generators"],
+    "files": [
+        "generators"
+    ],
     "main": "generators/index.js",
-    "keywords": ["yeoman-generator", "typescript"],
+    "keywords": [
+        "yeoman-generator",
+        "typescript"
+    ],
     "devDependencies": {
         "@types/chalk": "^2.2.0",
         "@types/jest": "^23.3.2",
@@ -40,11 +45,20 @@
         "testEnvironment": "node"
     },
     "lint-staged": {
-        "*.js": ["eslint --fix", "git add"],
-        "*.json": ["prettier --write", "git add"]
+        "*.js": [
+            "eslint --fix",
+            "git add"
+        ],
+        "*.json": [
+            "prettier --write",
+            "git add"
+        ]
     },
     "eslintConfig": {
-        "extends": ["xo", "prettier"],
+        "extends": [
+            "xo",
+            "prettier"
+        ],
         "env": {
             "jest": true,
             "node": true
@@ -61,7 +75,9 @@
                 }
             ]
         },
-        "plugins": ["prettier"]
+        "plugins": [
+            "prettier"
+        ]
     },
     "prettier": {
         "parser": "typescript",
