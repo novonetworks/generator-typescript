@@ -33,7 +33,7 @@
         "yeoman-test": "^1.7.0"
     },
     "engines": {
-        "npm": ">= 4.0.0"
+        "npm": ">= 6.0.0"
     },
     "dependencies": {
         "chalk": "^2.1.0",
@@ -95,7 +95,7 @@
     "scripts": {
         "pretest": "eslint .",
         "precommit": "lint-staged",
-        "test": "jest"
+        "test": "jest --coverage"
     },
     "repository": "novonetworks/generator-typescript",
     "license": "MIT"
