@@ -1,6 +1,6 @@
 {
     "name": "@novonetworks/generator-typescript",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "description": "Typescript Scaffolding Generator",
     "homepage": "https://github.com/novonetworks/generator-typescript",
     "author": {
