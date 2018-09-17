@@ -7,14 +7,9 @@
         "name": "Ryan Yang",
         "email": "orange@novonetworks.com"
     },
-    "files": [
-        "generators"
-    ],
+    "files": ["generators"],
     "main": "generators/index.js",
-    "keywords": [
-        "yeoman-generator",
-        "typescript"
-    ],
+    "keywords": ["yeoman-generator", "typescript"],
     "devDependencies": {
         "@types/chalk": "^2.2.0",
         "@types/jest": "^23.3.2",
@@ -37,6 +32,7 @@
     },
     "dependencies": {
         "chalk": "^2.1.0",
+        "dargs": "^6.0.0",
         "yeoman-generator": "^3.1.1",
         "yosay": "^2.0.1"
     },
@@ -44,20 +40,11 @@
         "testEnvironment": "node"
     },
     "lint-staged": {
-        "*.js": [
-            "eslint --fix",
-            "git add"
-        ],
-        "*.json": [
-            "prettier --write",
-            "git add"
-        ]
+        "*.js": ["eslint --fix", "git add"],
+        "*.json": ["prettier --write", "git add"]
     },
     "eslintConfig": {
-        "extends": [
-            "xo",
-            "prettier"
-        ],
+        "extends": ["xo", "prettier"],
         "env": {
             "jest": true,
             "node": true
@@ -68,21 +55,20 @@
                 "error",
                 {
                     "singleQuote": true,
-                    "printWidth": 90,
                     "tabWidth": 4,
                     "useTabs": false,
                     "semi": false
                 }
             ]
         },
-        "plugins": [
-            "prettier"
-        ]
+        "plugins": ["prettier"]
     },
     "prettier": {
         "parser": "typescript",
-        "semi": false,
         "singleQuote": true,
+        "tabWidth": 4,
+        "useTabs": false,
+        "semi": false,
         "overrides": [
             {
                 "files": "*.json",

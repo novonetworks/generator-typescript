@@ -1,13 +1,13 @@
 'use strict'
-const { isNotEmpty } = require('./utils')
+const { isNotEmpty, npmInstallPromise } = require('./utils')
 const Generator = require('yeoman-generator')
-const chalk = require('chalk')
+const chalk = require('chalk').default
 const JSON_SPACE = 4
 
 module.exports = class extends Generator {
     prompting() {
         this.log(
-            `Welcome to the ${chalk.default.red(
+            `Welcome to the ${chalk.red(
                 '@novonetworks/generator-typescript'
             )} generator!`
         )
@@ -92,7 +92,10 @@ module.exports = class extends Generator {
             moduleDirectories: ['<rootDir>/src', 'node_modules'],
             moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx'],
             testEnvironment: 'node',
-            testMatch: ['**/?(*.)(spec|test).(j|t)s?(x)', '**/__tests__/**/*.(j|t)s?(x)'],
+            testMatch: [
+                '**/?(*.)(spec|test).(j|t)s?(x)',
+                '**/__tests__/**/*.(j|t)s?(x)'
+            ],
             transform: {
                 '^.+\\.(ts|tsx)?$': 'ts-jest'
             },
@@ -122,10 +125,15 @@ module.exports = class extends Generator {
         }
 
         const lintStaged = {
-            '*.{ts,tsx,js,jsx}': ['prettier --write', 'tslint --fix', 'git add'],
+            '*.{ts,tsx,js,jsx}': [
+                'prettier --write',
+                'tslint --fix',
+                'git add'
+            ],
             '*.{json,css}': ['prettier --write', 'git add']
         }
 
+        this.spawnCommandSync('git', ['init'])
         this.fs.writeJSON(
             'package.json',
             {
@@ -166,21 +174,20 @@ module.exports = class extends Generator {
         ]
 
         const types = ['@types/jest']
-
-        this.spawnCommandSync('git', ['init'])
-        const install = this.npmInstall(devDependencies.concat(types), {
-            'save-dev': true
-        })
-
-        if (install) {
-            install
-                .then(() => {
-                    this.spawnCommandSync('git', ['add', '-A', '.'])
-                    this.spawnCommandSync('git', ['commit', '-m', '"Initial commit"'])
-                })
-                .catch(reason => {
-                    console.error(reason.message)
-                })
-        }
+        npmInstallPromise
+            .call(this, devDependencies.concat(types), {
+                'save-dev': true
+            })
+            .then(() => {
+                this.spawnCommandSync('git', ['add', '-A', '.'])
+                this.spawnCommandSync('git', [
+                    'commit',
+                    '-m',
+                    '"Initial commit"'
+                ])
+            })
+            .catch(reason => {
+                this.log(chalk.red(reason))
+            })
     }
 }
