@@ -42,7 +42,7 @@ MIT © [Novo Networks](http://www.novonetworks.com/)
 [npm-image]: https://badge.fury.io/js/%40novonetworks%2Fgenerator-typescript.svg
 [npm-url]: https://npmjs.org/package/%40novonetworks%2Fgenerator-typescript
 [travis-image]: https://travis-ci.org/novonetworks/generator-typescript.svg?branch=master
-[travis-url]: hhttps://travis-ci.org/novonetworks/generator-typescript
+[travis-url]: https://travis-ci.org/novonetworks/generator-typescript
 [daviddm-image]: https://david-dm.org/novonetworks/generator-typescript.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/novonetworks/generator-typescript
 [coveralls-image]: https://coveralls.io/repos/novonetworks/generator-typescript/badge.svg
