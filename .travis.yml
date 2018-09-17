@@ -1,0 +1,13 @@
+sudo: false
+language: node_js
+node_js:
+  - 'node'
+  - '6'
+  - '5'
+  - '4'
+
+# command to install dependencies
+install: npm install
+
+# command to run tests
+script: npm test
