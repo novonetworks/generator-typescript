@@ -168,13 +168,19 @@ module.exports = class extends Generator {
         const types = ['@types/jest']
 
         this.spawnCommandSync('git', ['init'])
-        this.npmInstall(devDependencies.concat(types), { 'save-dev': true })
-            .then(() => {
-                this.spawnCommandSync('git', ['add', '-A', '.'])
-                this.spawnCommandSync('git', ['commit', '-m', '"Initial commit"'])
-            })
-            .catch(reason => {
-                console.error(reason.message)
-            })
+        const install = this.npmInstall(devDependencies.concat(types), {
+            'save-dev': true
+        })
+
+        if (install) {
+            install
+                .then(() => {
+                    this.spawnCommandSync('git', ['add', '-A', '.'])
+                    this.spawnCommandSync('git', ['commit', '-m', '"Initial commit"'])
+                })
+                .catch(reason => {
+                    console.error(reason.message)
+                })
+        }
     }
 }

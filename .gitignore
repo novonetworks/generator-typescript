@@ -64,3 +64,5 @@ node_modules
 generators/app/templates/build
 **fixture/package-lock.json
 *.log
+.coveralls.yml
+coverage
