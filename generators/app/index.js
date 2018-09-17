@@ -42,9 +42,7 @@ module.exports = class extends Generator {
             {
                 type: 'input',
                 name: 'repository',
-                message:
-                    'question repository url (github.com/novonetworks/generator-typescript): ',
-                default: 'https://github.com/novonetworks/generator-typescript'
+                message: 'question repository url : '
             },
             {
                 type: 'input',
