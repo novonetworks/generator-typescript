@@ -75,8 +75,8 @@ module.exports = class extends Generator {
             start: 'ts-node src/index.ts',
             build: 'tsc',
             lint: 'tslint src/**/*.ts',
-            test: 'cross-env CI=true jest --colors',
-            'test:watch': 'jest --watchAll',
+            test: 'jest --colors --watchAll',
+            'test:ci': 'cross-env CI=true jest --colors',
             format: 'prettier --write "src/**/*"',
             'conflict-rules': 'tslint-config-prettier-check ./tslint.json'
         }
