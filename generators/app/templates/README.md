@@ -1,5 +1,13 @@
-# @novonetworks/generator-typescript [[![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
+# @novonetworks/generator-typescript
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
 > Typescript Scaffolding Generator
+
+## Using
+
+- typescript for build and type checking
+- jest for testing
+- prettier for formatting
+- husky and lint-staged for git hook
 
 ## Installation
 
@@ -8,6 +16,10 @@ First, install [Yeoman](http://yeoman.io) and @novonetworks/generator-typescript
 ```bash
 npm install -g yo
 npm install -g @novonetworks/generator-typescript
+```
+or
+```bash
+npm install -g yo @novonetworks/generator-typescript
 ```
 
 Then generate your new project:
@@ -28,11 +40,11 @@ yo @novonetworks/typescript
 MIT © [Novo Networks](http://www.novonetworks.com/)
 
 
-[npm-image]: https://badge.fury.io/js/@novonetworks/generator-typescript.svg
-[npm-url]: https://npmjs.org/package/@novonetworks/generator-typescript
-[travis-image]: https://travis-ci.org/wickedev/@novonetworks/generator-typescript.svg?branch=master
-[travis-url]: https://travis-ci.org/wickedev/@novonetworks/generator-typescript
-[daviddm-image]: https://david-dm.org/wickedev/@novonetworks/generator-typescript.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/wickedev/@novonetworks/generator-typescript
-[coveralls-image]: https://coveralls.io/repos/wickedev/@novonetworks/generator-typescript/badge.svg
-[coveralls-url]: https://coveralls.io/r/wickedev/@novonetworks/generator-typescript
+[npm-image]: https://badge.fury.io/js/%40novonetworks%2Fgenerator-typescript.svg
+[npm-url]: https://npmjs.org/package/%40novonetworks%2Fgenerator-typescript
+[travis-image]: https://travis-ci.org/novonetworks/generator-typescript.svg?branch=master
+[travis-url]: https://travis-ci.org/novonetworks/generator-typescript
+[daviddm-image]: https://david-dm.org/novonetworks/generator-typescript.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/novonetworks/generator-typescript
+[coveralls-image]: https://coveralls.io/repos/novonetworks/generator-typescript/badge.svg
+[coveralls-url]: https://coveralls.io/r/novonetworks/generator-typescript
