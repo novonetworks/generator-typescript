@@ -78,8 +78,7 @@ module.exports = class extends Generator {
             test: 'cross-env CI=true jest --colors',
             'test:watch': 'jest --watchAll',
             format: 'prettier --write "src/**/*"',
-            'pre-commit': 'npm-run-all test lint-staged',
-            'lint-staged': 'lint-staged'
+            'conflict-rules': 'tslint-config-prettier-check ./tslint.json'
         }
 
         const jest = {
@@ -90,18 +89,7 @@ module.exports = class extends Generator {
             },
             collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}'],
             moduleDirectories: ['<rootDir>/src', 'node_modules'],
-            moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx'],
-            testEnvironment: 'node',
-            testMatch: [
-                '**/?(*.)(spec|test).(j|t)s?(x)',
-                '**/__tests__/**/*.(j|t)s?(x)'
-            ],
-            transform: {
-                '^.+\\.(ts|tsx)?$': 'ts-jest'
-            },
-            transformIgnorePatterns: [
-                '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|ts|tsx)$'
-            ]
+            preset: 'ts-jest'
         }
 
         const prettier = {
@@ -120,7 +108,7 @@ module.exports = class extends Generator {
 
         const husky = {
             hooks: {
-                'pre-commit': 'npm run pre-commit'
+                'pre-commit': 'lint-staged'
             }
         }
 
@@ -166,11 +154,12 @@ module.exports = class extends Generator {
             'ts-jest',
             'cross-env',
             'npm-run-all',
-            'husky@next',
+            'husky',
             'prettier',
             'lint-staged',
             'tslint',
-            'tslint-config-prettier'
+            'tslint-config-prettier',
+            'tslint-plugin-prettier'
         ]
 
         const types = ['@types/jest']

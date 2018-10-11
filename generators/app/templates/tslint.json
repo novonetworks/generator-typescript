@@ -1,10 +1,21 @@
 {
     "rules": {
         "no-console": false,
-        "semicolon": [true, "never"]
+        "semicolon": [
+            true,
+            "never"
+        ],
+        "prettier": true
     },
-    "extends": ["tslint:recommended", "tslint-config-prettier"],
+    "extends": [
+        "tslint:recommended",
+        "tslint-config-prettier",
+        "tslint-plugin-prettier"
+    ],
     "linterOptions": {
-        "exclude": ["config/**/*.js", "node_modules/**/*.ts"]
+        "exclude": [
+            "config/**/*.js",
+            "node_modules/**/*.ts"
+        ]
     }
 }
