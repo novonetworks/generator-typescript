@@ -170,6 +170,7 @@ module.exports = class extends Generator {
             'tsconfig-paths',
             'webpack',
             'webpack-cli',
+            'ts-loader',
             'webpack-node-externals',
             'fork-ts-checker-webpack-plugin',
             'tsconfig-paths-webpack-plugin'
