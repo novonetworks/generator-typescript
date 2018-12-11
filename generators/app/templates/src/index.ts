@@ -1,1 +1,3 @@
-console.log('Hello Typescript')
+import message from '~/sub'
+
+console.log(message)

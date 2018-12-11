@@ -11,7 +11,13 @@ describe('@novonetworks/generator-typescript:app', () => {
     })
 
     it('creates package.json files', () => {
-        assert.file(['package.json'])
+        assert.file([
+            '.gitignore',
+            '.editorconfig',
+            'tslint.json',
+            'package.json'
+        ])
+        assert.noFile(['_gitignore'])
         assert.jsonFileContent('package.json', {
             name: 'app-name'
         })

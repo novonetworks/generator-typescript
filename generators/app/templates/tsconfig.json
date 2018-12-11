@@ -6,8 +6,7 @@
         "module": "commonjs",
         /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
         "lib": [
-            "es6",
-            "dom"
+            "es6"
         ],
         /* Specify library files to be included in the compilation. */
         // "allowJs": true,                       /* Allow javascript files to be compiled. */
@@ -18,9 +17,9 @@
         "sourceMap": true,
         /* Generates corresponding '.map' file. */
         // "outFile": "./",                       /* Concatenate and emit output to single file. */
-        "outDir": "./build",
+        // "outDir": "dist",
         /* Redirect output structure to the directory. */
-        "rootDir": "src",
+        // "rootDir": "src",
         /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
         // "composite": true,                     /* Enable project compilation */
         "removeComments": true,
@@ -59,9 +58,14 @@
         /* Module Resolution Options */
         "moduleResolution": "node",
         /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
-        "baseUrl": "src",
+        "baseUrl": ".",
         /* Base directory to resolve non-absolute module names. */
-        // "paths": {},                           /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
+        "paths": {
+            "~/*": [
+                "src/*"
+            ]
+        },
+        /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
         // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
         // "typeRoots": [],                       /* List of folders to include type definitions from. */
         // "types": [],                           /* Type declaration files to be included in compilation. */
@@ -77,11 +81,13 @@
         // "inlineSources": true,                 /* Emit the source alongside the sourcemaps within a single file; requires '--inlineSourceMap' or '--sourceMap' to be set. */
 
         /* Experimental Options */
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
         /* Enables experimental support for ES7 decorators. */
         // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
+        "resolveJsonModule": true
     },
     "include": [
-        "src/**/*"
+        "src/**/*",
+        "test/**/*"
     ]
 }

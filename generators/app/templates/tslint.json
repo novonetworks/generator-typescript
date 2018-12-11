@@ -15,7 +15,9 @@
     "linterOptions": {
         "exclude": [
             "config/**/*.js",
-            "node_modules/**/*.ts"
+            "node_modules/**/*.ts",
+            "wallaby.js",
+            "webpack.config.js"
         ]
     }
 }

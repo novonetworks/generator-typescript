@@ -36,8 +36,8 @@ module.exports = class extends Generator {
             {
                 type: 'input',
                 name: 'main',
-                message: 'question entry point (src/index.ts): ',
-                default: 'src/index.ts'
+                message: 'question entry point (dist/index.js): ',
+                default: 'dist/index.js'
             },
             {
                 type: 'input',
@@ -68,12 +68,19 @@ module.exports = class extends Generator {
     }
 
     writing(rootPath) {
-        this.fs.copy(this.templatePath('**/*'), this.destinationRoot(rootPath))
-        this.fs.copy(this.templatePath('**/.*'), this.destinationRoot(rootPath))
+        this.fs.copy(
+            this.templatePath('**/*'),
+            this.destinationRoot(rootPath),
+            { globOptions: { dot: true } }
+        )
+        this.fs.move(
+            `${this.destinationPath()}/_gitignore`,
+            `${this.destinationPath()}/.gitignore`
+        )
 
         const scripts = {
-            start: 'ts-node src/index.ts',
-            build: 'tsc',
+            start: 'ts-node -r tsconfig-paths/register src/index.ts',
+            build: 'webpack',
             lint: 'tslint src/**/*.ts',
             test: 'jest --colors --watchAll',
             'test:ci': 'cross-env CI=true jest --colors',
@@ -159,7 +166,13 @@ module.exports = class extends Generator {
             'lint-staged',
             'tslint',
             'tslint-config-prettier',
-            'tslint-plugin-prettier'
+            'tslint-plugin-prettier',
+            'tsconfig-paths',
+            'webpack',
+            'webpack-cli',
+            'webpack-node-externals',
+            'fork-ts-checker-webpack-plugin',
+            'tsconfig-paths-webpack-plugin'
         ]
 
         const types = ['@types/jest']
