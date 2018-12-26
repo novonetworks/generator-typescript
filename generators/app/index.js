@@ -125,7 +125,7 @@ module.exports = class extends Generator {
         const lintStaged = {
             '*.{ts,tsx,js,jsx}': [
                 'prettier --write',
-                'tslint --fix',
+                'tslint -c . --fix',
                 'git add'
             ],
             '*.{json,css}': ['prettier --write', 'git add']
