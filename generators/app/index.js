@@ -91,10 +91,13 @@ module.exports = class extends Generator {
         const jest = {
             globals: {
                 'ts-jest': {
-                    tsConfigFile: '<rootDir>/tsconfig.json'
+                    tsConfig: '<rootDir>/tsconfig.json'
                 }
             },
             collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}'],
+            moduleNameMapper: {
+                '^~/(.*)$': '<rootDir>/src/$1'
+            },
             moduleDirectories: ['<rootDir>/src', 'node_modules'],
             preset: 'ts-jest'
         }
@@ -155,6 +158,7 @@ module.exports = class extends Generator {
 
     install() {
         const devDependencies = [
+            '@types/node',
             'typescript',
             'ts-node',
             'jest',
