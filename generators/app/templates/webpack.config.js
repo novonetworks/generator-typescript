@@ -17,21 +17,14 @@ module.exports = {
     mode: 'production',
     target: 'node',
     externals: [nodeExternals()],
-    entry: [
-        appIndexJs
-    ],
+    entry: [appIndexJs],
     output: {
         path: appBuild,
         filename: 'index.js'
     },
     resolve: {
-        extensions: [
-            '.ts',
-            '.tsx'
-        ],
-        plugins: [
-            new TsconfigPathsPlugin({ configFile: appTsConfig })
-        ]
+        extensions: ['.ts', '.tsx'],
+        plugins: [new TsconfigPathsPlugin({ configFile: appTsConfig })]
     },
     module: {
         rules: [
