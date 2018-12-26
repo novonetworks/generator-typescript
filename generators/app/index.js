@@ -187,11 +187,7 @@ module.exports = class extends Generator {
             })
             .then(() => {
                 this.spawnCommandSync('git', ['add', '-A', '.'])
-                this.spawnCommandSync('git', [
-                    'commit',
-                    '-m',
-                    '"Initial commit"'
-                ])
+                this.spawnCommandSync('git', ['commit', '-m', 'Initial commit'])
             })
             .catch(reason => {
                 this.log(chalk.red(reason))
