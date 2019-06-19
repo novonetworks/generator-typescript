@@ -69,6 +69,7 @@ function scheduleInstallTaskPromise(installer, paths, options, spawnOptions) {
                         ) {
                             this.emit('error', error)
                         }
+
                         reject(error)
                         done()
                     })
@@ -89,6 +90,7 @@ function scheduleInstallTaskPromise(installer, paths, options, spawnOptions) {
                         } else {
                             resolve()
                         }
+
                         done()
                     })
             },
