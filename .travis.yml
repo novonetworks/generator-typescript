@@ -1,15 +1,14 @@
-sudo: false
 language: node_js
 node_js:
 - 'node'
-- '8'
+- 'lts/*'
 
 cache:
     directories:
     - node_modules # NPM packages
 
 # command to install dependencies
-install: npm install
+install: yarn
 
 # command to run tests
-script :  npm test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+script :  yarn test:ci && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js

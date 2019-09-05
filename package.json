@@ -1,6 +1,6 @@
 {
     "name": "@novonetworks/generator-typescript",
-    "version": "1.4.2",
+    "version": "1.4.1",
     "description": "Typescript Scaffolding Generator",
     "homepage": "https://github.com/novonetworks/generator-typescript",
     "author": {
@@ -32,8 +32,8 @@
     },
     "dependencies": {
         "chalk": "^2.4.2",
-        "dargs": "^7.0.0",
-        "yeoman-generator": "^4.0.2",
+        "dargs": "^6.0.0",
+        "yeoman-generator": "^4.0.1",
         "yosay": "^2.0.2"
     },
     "jest": {
@@ -82,7 +82,8 @@
     "scripts": {
         "pretest": "eslint .",
         "precommit": "lint-staged",
-        "test": "jest --coverage"
+        "test": "jest --watch",
+        "test:ci": "jest --coverage"
     },
     "repository": "novonetworks/generator-typescript",
     "license": "MIT"
