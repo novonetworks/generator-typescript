@@ -9,4 +9,4 @@ src
 wallaby.js
 webpack.config.js
 *.lock
-
+coverage

@@ -1,0 +1,104 @@
+{
+    "name": "app-name",
+    "version": "1.0.0",
+    "description": "Typescript Project",
+    "license": "MIT",
+    "main": "lib/index.js",
+    "module": "lib/index.es.js",
+    "jsnext:main": "lib/index.es.js",
+    "typings": "lib/index.d.ts",
+    "scripts": {
+        "start": "ts-node -r tsconfig-paths/register src/index.ts",
+        "build": "rollup -c",
+        "lint": "eslint --ext .ts,.tsx src",
+        "test": "jest --colors --watchAll",
+        "test:ci": "cross-env CI=true jest --colors --coverage",
+        "format": "prettier --write \"src/**/*\"",
+        "prepare": "yarn run build"
+    },
+    "jest": {
+        "preset": "ts-jest",
+        "testEnvironment": "node",
+        "collectCoverageFrom": ["src/**/*.{js,jsx,ts,tsx}"],
+        "moduleNameMapper": {
+            "^~/(.*)$": "<rootDir>/src/$1"
+        }
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{ts,tsx}": ["prettier --write", "eslint --fix", "git add"],
+        "*.{json,css}": ["prettier --write", "git add"]
+    },
+    "eslintConfig": {
+        "parser": "@typescript-eslint/parser",
+        "parserOptions": {
+            "project": "./tsconfig.json",
+            "tsconfigRootDir": "."
+        },
+        "plugins": ["@typescript-eslint", "prettier"],
+        "rules": {
+            "prettier/prettier": "error",
+            "ban-ts-ignore": 0,
+            "@typescript-eslint/ban-ts-ignore": 0,
+            "@typescript-eslint/no-explicit-any": 0,
+            "@typescript-eslint/no-non-null-assertion": 0,
+            "@typescript-eslint/no-misused-promises": 0
+        },
+        "extends": [
+            "plugin:@typescript-eslint/eslint-recommended",
+            "plugin:@typescript-eslint/recommended",
+            "plugin:@typescript-eslint/recommended-requiring-type-checking",
+            "prettier",
+            "prettier/@typescript-eslint"
+        ]
+    },
+    "eslintIgnore": ["node_modules/**/*", "lib/**/*", "wallaby.js"],
+    "prettier": {
+        "parser": "typescript",
+        "trailingComma": "all",
+        "semi": false,
+        "singleQuote": true,
+        "overrides": [
+            {
+                "files": ["*.json"],
+                "options": {
+                    "parser": "json"
+                }
+            }
+        ]
+    },
+    "devDependencies": {
+        "@types/jest": "^24.0.18",
+        "@types/node": "^12.7.4",
+        "@typescript-eslint/eslint-plugin": "^2.1.0",
+        "@typescript-eslint/parser": "^2.1.0",
+        "coverage": "^0.4.1",
+        "coveralls": "^3.0.6",
+        "cross-env": "^5.2.1",
+        "eslint": "^6.3.0",
+        "eslint-config-prettier": "^6.2.0",
+        "eslint-plugin-prettier": "^3.1.0",
+        "husky": "^3.0.5",
+        "jest": "^24.9.0",
+        "lint-staged": "^9.2.5",
+        "npm-run-all": "^4.1.5",
+        "prettier": "^1.18.2",
+        "rollup": "^1.20.3",
+        "rollup-plugin-commonjs": "^10.1.0",
+        "rollup-plugin-node-resolve": "^5.2.0",
+        "rollup-plugin-peer-deps-external": "^2.2.0",
+        "rollup-plugin-ts-paths": "^1.0.3",
+        "rollup-plugin-typescript2": "^0.24.0",
+        "ts-jest": "^24.0.2",
+        "ts-loader": "^6.0.4",
+        "ts-node": "^8.3.0",
+        "tsconfig-paths": "^3.8.0",
+        "tslib": "^1.10.0",
+        "typescript": "^3.6.2"
+    },
+    "files": ["lib"]
+}

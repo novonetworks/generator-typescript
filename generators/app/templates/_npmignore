@@ -1,0 +1,12 @@
+.idea
+.vscode
+node_modules
+src
+.editorconfig
+.gitignore
+!package.json
+*.json
+wallaby.js
+webpack.config.js
+*.lock
+coverage
