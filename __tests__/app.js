@@ -59,7 +59,7 @@ describe('@novonetworks/generator-typescript:app', () => {
 
     it('create tsconfig.json file', async () => {
         const content = await readContent('tsconfig.json')
-        assert.fileContent('tsconfig.json', content)
+        assert.jsonFileContent('tsconfig.json', JSON.parse(content))
     })
 
     it('create wallaby.js file', async () => {
