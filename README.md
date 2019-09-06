@@ -8,6 +8,7 @@
 - jest for testing
 - prettier for formatting
 - husky and lint-staged for git hook
+- distribute bundle with rollup.js
 
 ## Installation
 

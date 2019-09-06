@@ -87,10 +87,14 @@
     },
     "scripts": {
         "lint": "eslint generators --fix",
-        "precommit": "lint-staged",
         "test": "jest __tests__ --watch",
         "test:ci": "jest __tests__ --coverage"
     },
     "repository": "novonetworks/generator-typescript",
-    "license": "MIT"
+    "license": "MIT",
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    }
 }
