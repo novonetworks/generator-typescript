@@ -44,7 +44,7 @@ describe('@novonetworks/generator-typescript:app', () => {
 
     it('create package.json file', async () => {
         const content = await readContent('package.json')
-        assert.fileContent('package.json', content)
+        assert.jsonFileContent('package.json', JSON.parse(content))
     })
 
     it('create README.md file', async () => {

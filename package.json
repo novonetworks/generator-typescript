@@ -59,10 +59,9 @@
             "prettier/prettier": [
                 "error",
                 {
-                    "singleQuote": true,
-                    "tabWidth": 4,
-                    "useTabs": false,
-                    "semi": false
+                    "trailingComma": "all",
+                    "semi": false,
+                    "singleQuote": true
                 }
             ]
         },
@@ -71,14 +70,12 @@
     "eslintIgnore": ["fixtures"],
     "prettier": {
         "parser": "typescript",
-        "singleQuote": true,
         "trailingComma": "all",
-        "tabWidth": 4,
-        "useTabs": false,
         "semi": false,
+        "singleQuote": true,
         "overrides": [
             {
-                "files": "*.json",
+                "files": ["*.json"],
                 "options": {
                     "parser": "json"
                 }

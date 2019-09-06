@@ -111,6 +111,7 @@ module.exports = class extends Generator {
             this.yarnInstall()
             this.spawnCommandSync('git', ['add', '-A', '.'])
             this.spawnCommandSync('git', ['commit', '-m', 'Initial commit'])
+            this.spawnCommandSync('yarn', ['format'])
         } catch (reason) {
             this.log(chalk.red(reason))
         }
