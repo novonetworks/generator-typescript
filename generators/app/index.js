@@ -1,7 +1,7 @@
 'use strict'
 const packageJson = require('./package.json')
 const Generator = require('yeoman-generator')
-const chalk = require('chalk').default
+const chalk = require('chalk')
 const JSON_SPACE = 4
 
 function isNotEmpty(message) {
